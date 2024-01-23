@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function cargarCarritoStorage() {
         if (Storage.getItem('carrito') != null) {
-            carrito=JSON.parse(storage.getItem('carrito'));
+            carrito=JSON.parse(Storage.getItem('carrito'));
         }
     }
 
