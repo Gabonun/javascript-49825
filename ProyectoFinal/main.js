@@ -1,27 +1,18 @@
 //Iniciamos el evenlistener para poder interactuar con el html de forma dinamica
 document.addEventListener('DOMContentLoaded', () => {
-    
-    const baseDeDatos = [ //Se cambia de nombre el arreglo y se agregan el ID y la imagen para comenzar a darle forma
-       {id: 1, nombre: "Alive 2007", precio: 30000, imagen: 'images/Alive_2007.png'},
-       {id: 2, nombre: "Discovery", precio: 25000, imagen: 'images/Discovery.png'},
-       {id: 3, nombre: "Human After All", precio: 28000, imagen: 'images/human_after_all.png'},
-       {id: 4, nombre: "Random Access Memories", precio: 32000, imagen: 'images/Random_Access_Memories.png'},
-       {id: 5, nombre: "Tron Legacy Soundtrack", precio: 42000, imagen: 'images/tron_legacy.png'},
-       {id: 6, nombre: "Homework", precio: 27000, imagen: 'images/homework.png'}
-    ];
 
-    //let baseDeDatos = []; //Acá declaramos la variable como arreglo pero solo para utilizar el fetch...
+    let baseDeDatos = []; //Acá declaramos la variable como arreglo pero solo para utilizar el fetch...
 
     //ejecutamos la función para obtener los datos desde el archivo json y armar el pool de productos... (aca da el error)
-    // function cargarBaseDeDatos() {
-    //     fetch("./data.json")
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             baseDeDatos = data;
-    //             armarProductos();
-    //         })
-    //         .catch(error => console.error('Error al cargar la base de datos:', error));
-    // }
+    function cargarBaseDeDatos() {
+        fetch("./data.json")
+            .then(response => response.json())
+            .then(data => {
+                baseDeDatos = data;
+                armarProductos();
+            })
+            .catch(error => console.error('Error al cargar la base de datos:', error));
+    }
 
     let carrito = [];
     const divisa = '$';
@@ -171,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     DOMbotonVaciar.addEventListener('click', vaciarCarrito);
 
     cargarCarritoStorage();
-    //cargarBaseDeDatos(); se comenta porque el fetch da error que no se ha podido identificar...
+    cargarBaseDeDatos(); //se comenta porque el fetch da error que no se ha podido identificar...
     armarProductos();
     armarCarrito();
 });
